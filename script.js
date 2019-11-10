@@ -4,10 +4,10 @@ function dark() {
 
     var myButton = document.createElement("button");
     myButton.innerHTML = "🌓";
-    var div1 = document.getElementById("div1");
-    div1.appendChild(myButton);
-
     var body = document.getElementById("body");
+    var div1 = document.getElementById("div1");
+    body.appendChild(myButton);
+
     body.classList.add("dark");
     var site_element_list = document.getElementsByClassName("site_content");
 
