@@ -86,7 +86,7 @@ nav a::before { /* Hover effect :In my link, before the text, what do I have */
   content: '';
   display: block;
   height: 2px; /* thickness of bar */
-  background-color: #FF8700;
+  background-color: #FFA500;
 
   position: absolute;
   bottom: 0;
@@ -112,13 +112,20 @@ nav a:hover::before {
   margin-right: auto;
 }
 
-.who_am_i {
-  font-size: 200%;
+.about_achievements_list {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+.about_achievements_list_items {
+  font-family: "IBM Plex Serif", sans-serif;
+  padding-bottom: 20px;
+  font-size: 120%;
 }
 
 button {
   position: absolute;
-  margin-left: 1460px;
+  margin-left: 1440px;
   top: 15px;
   border: none;
   background: none;
