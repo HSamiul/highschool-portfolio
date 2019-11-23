@@ -3,28 +3,28 @@ document.body.onload = dark; // this function relies on the DOM being loaded, so
 function dark() {
 
     var myButton = document.createElement("button");
-    myButton.innerHTML = "🌓";
-    var body = document.getElementById("body");
-    var div1 = document.getElementById("div1");
-    body.appendChild(myButton);
+    myButton.innerHTML = "🌓"; //sets text of the button
+    var body = document.getElementById("body"); //creates a  variable representing the body
+    body.appendChild(myButton); //adds the button to the body (so that it appears in the html)
 
-    body.classList.add("dark");
-    var site_element_list = document.getElementsByClassName("site_content");
+    body.classList.add("dark"); //it's like saying <body class = "dark">
+    var site_element_list = document.getElementsByClassName("site_content"); //returns multiple elements that have the class; a list.
 
-    myButton.addEventListener("click", function() { //activate dark mode
-        if (body.classList.contains("dark")) {
-            document.getElementById("body").style.backgroundColor = "black";
+    myButton.addEventListener("click", function() { //activate toggle
+        if (body.classList.contains("dark")) { //this if statement activates dark mode
+            document.getElementById("body").style.backgroundColor = "black"; //sets the body'd background to black
 
-            for (let step = 0; step < site_element_list.length; step++) {
+            for (let step = 0; step < site_element_list.length; step++) { //set's site content (words) to white; iterates through site_element_list
                 site_element_list[step].style.color = "white";
             }
-            body.classList.remove("dark");
-        } else {
+            body.classList.remove("dark"); // the theme has been switched, so we remove the dark class from body. Now when we want to toggle back,
+            //the else statement activating light mode will run rather than the if statement because body DOES NOT contain the dark class
+        } else { //this else statement activates light mode. Basically inverting back the colors.
             document.getElementById("body").style.backgroundColor = "white";
             for (let step = 0; step < site_element_list.length; step++) {
                 site_element_list[step].style.color = "black";
             }
-            body.classList.add("dark");
+            body.classList.add("dark"); //adds back the dark class to body so that when we press the toggle again, dark mode is activated.
         }
     })
 }
