@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Grit}
+\lhead{Mathematical Induction}
+\rfoot{Page \thepage}
+ 
+\begin{document}
+ 
+\section{Introduction}
+ 
+Visualize an infinitely long line of dominoes. If you knock the first one down yourself, you know the next one will fall, and so will the one after that.
+Let's call any domino $k$. We can say if the $k=1$ domino falls, the $k=2$ domino falls. More generally, if the $k$'th domino falls, the $k+1$'th domino will as well. \\
+
+\noindent
+This idea is very powerful. We can use it to prove a rule true. Speaking arbitrarily, a rule can have $k$ cases. If we can prove the rule holds true for the $k+1$'th case, then its true for all cases. 
+
+\section{Mathematical Induction}
+A domino cannot fall by itself; it needs an initial push. This initial push is the \textbf{base case}. We must prove the base case true because we must have a $k$'th case to have a $k+1$'th case. \\
+
+\noindent
+Once we prove the base case true, we can try and prove the $k+1$'th case true, the \textbf{inductive step}. The $k+1$'th case is the infinitely long line of dominoes falling down one by one. \\
+
+\noindent
+We can apply this logic to something like a sequence. Let's write down the domino effect in mathematical terms.\\
+
+\noindent
+For a sequence $P(n)$ up to the $n$'th term, let the equation $S(n)$ represent the summation of $P(n)$'s elements:
+
+\[
+a_{1} + a_{2} + \dots + a_{n} = S(n)
+\]
+
+\noindent
+Set $n = k$, where k is any real integer. \\
+
+\noindent	
+Base case: \\
+\[
+k = \text{some base value}
+\]
+
+\noindent
+Assuming the equation $S(n)$ holds true to the sequence for $n = 1$, prove $S(n)$ holds true for $n = k + 1$. \\
+
+\noindent
+Inductive step:
+\[
+n = k + 1
+\]
+If the inductive step is successful, $S(n)$ is a valid rule.
+
+\newpage
+\section{Example}
+Prove:
+\[1^{3} + 2^{3} + \dots + n^{3} = \frac{n^{2}(n+1)^{2}}{4} \text{ for }  n \geq 0
+\]
+
+\noindent
+Base case:
+\begin{align}
+k &= 0 \\
+0^{3} &= \frac{0^{2}(n+1)^{2}}{4} \\
+0 &= 0
+\end{align}
+
+\noindent
+Inductive step: \\
+
+\noindent
+Adding the $k+1$'th term to $S(k)$ yields
+\[
+\frac{k^{2}(k+1)^{2}}{4} + (k+1)^{3}
+\]
+We must prove that 
+
+\[
+\frac{k^{2}(k+1)^{2}}{4} + (k+1)^{3} = \frac{(k+1)^{2}((k+1)+1)^{2}}{4} 
+\]
+
+\noindent
+To explain the above step in plain English, we want to prove that $S(k)$ in terms of $k$ plus the $k+1$'th term is equal to $S(k+1)$ in terms of the $k+1$'th term. \\
+
+\noindent
+In other words, we know $S(k)$ is true in terms of $k$, but we need to prove its true for all cases, $k+1$.
+
+\begin{align}
+\frac{k^{2}(k+1)^{2}}{4} + (k+1)^{3} &= \frac{(k+1)^{2}((k+1)+1)^{2}}{4} \\[10pt]
+k^{2}(k+1)^{2}+4(k+1)^{3} &= (k+1)^{2}(k+2)^{2} \\[10pt]
+(k+1)\frac{k^{2}(k+1)^{2}+4(k+1)^{3}}{k+1} &= (k+1)^{2}(k+2)^{2} \\[10pt]
+(k+1)(k+1)(k+2)^{2} &= (k+1)^{2}(k+2)^{2} \\[10pt]
+\frac{(k+1)^{2}(k+2)^{2}}{4} &= \frac{(k+1)^{2}(k+2)^{2}}{4} 
+\end{align}
+\noindent
+Note: In (6), we use the rational roots theorem to see that $k = -1$ is a root of the LHS, so we know we can divide by $k+1$ to create a simpler polynomial. \\
+
+\noindent
+S(n) is a valid summation formula  of the sequence P(n) for all $n\geq0$.
+
+\section{Conclusion}
+\noindent
+The hardest part of mathematical induction is the algebra in the inductive step. You're trying to prove a formula $S(k)$ plus $k+1$ is equivalent to what we're trying to prove is true, $S(k+1)$. Once you've got that down, induction is just some algebraic gymnastics. \\
+
+\noindent
+Finally, mathematical induction isn't limited to proving domino-sequence like relationships. We can use it to prove many things, from summation formulas  to the maximum regions a square plane can be broken up into by n lines.
+
+\section{References}
+\begin{verbatim}
+https://www.cs.cmu.edu/~adamchik/21-127/lectures/induction_1_print.pdf
+\end{verbatim}
+
+\begin{verbatim}
+http://zimmer.csufresno.edu/~larryc/proofs/proofs.mathinduction.html
+\end{verbatim}
+
+\begin{verbatim}
+https://brilliant.org/wiki/rational-root-theorem/
+\end{verbatim}
+
+\begin{verbatim}
+my_algorithms_teacher.exe
+\end{verbatim}
+\end{document}
