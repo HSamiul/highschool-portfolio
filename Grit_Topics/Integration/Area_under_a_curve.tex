@@ -1,0 +1,260 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{xlop}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Grit}
+\lhead{Area Under a Curve}
+\rfoot{Page \thepage}
+
+\begin{document}
+ 
+\section{Introduction}
+
+Say you wanted to find the area under the following curve. It's sort of a triangle, but not really, so you can't apply $\frac{bh}{2}$ to it. There must be a formula, call it $A(x)$, that will give us the area under this curve or even... any curve, right?
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{oogadog}
+\end{figure}
+\noindent
+
+\newpage
+\section{Determining A(x)}
+
+\noindent
+Let's assume $A(x)$ actually exists. $A(x)$ gives the area under a curve, $f(x)$, from $x=0$ to any $x$ value. Of course, we don't want to limit ourselves to $[0,x]$. We want to be able to find the area under $f(x)$ between any interval, that is, $[x,x+h]$. \\
+
+\noindent
+Let's visualize what we've just described:
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{ooga-1}
+\end{figure}
+
+\noindent
+The area, $A$, under the curve in $[x,x+h]$ is
+
+\begin{align}
+A_{[x,x+h]} = A(x+h)-A(x)
+\end{align}
+
+\noindent
+To verbalize the above expression, the area from $[0,x]$ subtracted from the area from $[0,x+h]$ yields the area in $[x,x+h]$. 
+
+\newpage
+\noindent
+We don't know $A(x)$ yet, so the best we can do is try to find a formula achieving something similar to it. A simple shape that could fit under the curve and we know the area formula for is a rectangle. Let's draw a rectangle under the curve within our interval, $[x,x+h]$.
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{oogawhy}
+\end{figure}
+
+\noindent
+The area of the rectangle is
+
+\begin{align}
+A_{rectangle} &= (x+h - x)*f(x) \\
+A_{rectangle} &= h*f(x)
+\end{align}
+
+\noindent
+The area of the rectangle is approximately equal to the area under the curve at $[x,x+h]$. We can express this as 
+\begin{align}
+h*f(x) \approx A(x+h)-A(x)
+\end{align}
+
+\newpage
+
+\noindent
+The area of the rectangle is somewhat close to the actual area under the curve, but it's still not \textit{exactly} the same. We can draw another rectangle to represent the excess area our first rectangle doesn't cover.
+
+\begin{figure}[htbp!]
+\centering
+
+\includegraphics[scale=0.75]{oogahuh}
+\end{figure}
+
+\noindent
+The blue rectangular area and the green excess represent the exact area under the curve, but the excess is incalculable | it's a portion of another rectangle. Let's call this other dashed rectangle $DR$ and the blue rectangle $BR$. \\
+
+\noindent
+Let's call the excess area $E$. We can use $E$ to create the exact equation
+\begin{align}
+h*f(x) &= A(x+h)-A(x)+E
+\end{align}
+
+\noindent
+Equation 5 says that the area of $BR$ is equal to the exact area under the curve minus the excess, $E$. \\
+
+\noindent
+$E$ will never be higher than the area of DR because $E$ is a portion of DR. In fact, why don't we try pushing $x$ and $x+h$ closer together (decrease $h$) and see what happens to $E$...
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{oogagiga}
+\end{figure}
+
+\newpage
+
+\noindent
+We can push $x$ and $x+h$ even closer...
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{oogatera}
+\end{figure}
+
+\noindent
+Notice that as $h$ gets smaller, how much of DR is composed by the excess, $E$, increases. That is, as $h$ approaches $0$, $E$ approaches the area of the dashed rectangle. \\
+
+\noindent
+The fact that $E$ will always be smaller than the area of DR and that $E$ approaches that area (becomes nearly equal to it) lets us set up the inequality
+
+\begin{align}
+E \leq \lvert h[f(x)-f(x+h)] \rvert
+\end{align} 
+
+\noindent
+where the RHS represents the area of the dashed rectangle. To clarify, $f(x)-f(x+h)$ is the height of DR and $h$ is the width. \\
+
+\noindent
+$E$ is quite arbitrary, so let's try expressing it by rearranging equation 5:
+
+\begin{align}
+h*f(x) &= A(x+h)-A(x)+E \\
+\frac{E}{h} &= \frac{A(x+h)}{h} - \frac{A(x)}{h} - f(x)
+\end{align}
+
+\noindent
+We'll keep $E$ in the form $\frac{E}{h}$ for the sake of the next few steps. \\
+
+\noindent
+We can rewrite our inequality in equation 6 as
+
+\begin{align}
+\frac{A(x+h)}{h} -  \frac{A(x)}{h} - f(x) &\leq \lvert\frac{h[f(x)-f(x+h)]}{h} \rvert \\
+\frac{A(x+h)-A(x)}{h} - f(x) &\leq \lvert f(x)-f(x+h) \rvert
+\end{align}
+
+\noindent
+We're going to have get a bit conceptual now. Again, $E$ is always less than or equal to the area of DR, or $\lvert h[f(x)-f(x+h)] \rvert$. As $h$ approaches 0, $f(x)=f(x+h)$, so $f(x)-f(x+h)=0$. \\
+
+\noindent
+Look at our inequality in equation 10. As $h$ approaches $0$, the RHS equals 0. So, as the RHS gets smaller, so must the LHS since the LHS must always be less than or equal to the RHS. \\
+
+\noindent
+For the LHS to equal 0, the following must be true as $h$ approaches 0:
+\begin{align}
+f(x) &= \frac{A(x+h)-A(x)}{h}
+\end{align}
+
+\noindent
+Using the two ideas that the RHS equals 0 as $h$ approaches 0 and that equation 11 must be true as $h$ approaches 0, we can   rephrase equation 11 as a limit:
+
+\begin{align}
+\lim_{h \to 0} f(x) &= \lim_{h \to 0} \frac{A(x+h)-A(x)}{h}
+\end{align}
+
+\noindent
+$h$ is irrelevant to the value of the LHS because $h$ is not a variable on the LHS. \\
+
+\noindent
+Thus,
+
+\begin{align}
+f(x) &= \lim_{h \to 0} \frac{A(x+h)-A(x)}{h} \\
+f(x) &= \frac{d}{dx}A(x)
+\end{align}
+
+\noindent
+And wouldn't you know it, $f(x)$ is the derivative of $A(x)$. That is, $A(x)$ is the integral of $f(x)$. Thus,
+
+\begin{align}
+A(x) = \int_{}^{}f(x)dx
+\end{align}
+
+\noindent
+Let's not forget our goal! $A(x)$ is the formula for the area under the curve in $[0,x]$. We need to modify the equation to give us the area from $[x,x+h]$. Well, that's as simple as subtracting $A(x)$ from $A(x+h)$. That is, using the following the definite integral:
+
+\begin{align}
+A(x+h) - A(x) = \int_{x}^{x+h}f(x)dx
+\end{align}
+
+\noindent
+For the sake of making our final statement pretty, let's call our target interval $[a,b]$. \\
+
+\noindent
+The area under a curve, $f(x)$, in any interval $[a,b]$ can be given by the definite integral:
+
+\begin{align}
+\int_{a}^{b}f(x)dx
+\end{align}
+
+\newpage
+\section{Example}
+The point of this document is to show why the definite integral happens to be the area under a curve, so an example simply showcasing the integral feels... unrelated. Nonetheless, let's flex. \\
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.75]{oogafinale}
+\end{figure}
+
+\noindent
+The graph above represents the velocity of a person running over a time interval. We can find the displacement of this person, say, from 2 to 4 seconds using the definite integral. \\
+
+\noindent
+I know the area under the curve is the displacement, meters, because the product or "area relationship" between velocity and time results in $(m/s)(s) = m$. \\
+
+\noindent
+The integral of $x^{2}-2x-1$ is 
+\begin{align}
+\frac{x^{3}}{3}-x^{2}-x
+\end{align}
+
+\noindent
+Notice how we don't care about $+C$ because the definite integral cancels out the $+C$. \\
+
+\noindent
+Completing the definite integral yields
+\begin{align}
+A_{[2,4]} &= \int_{2}^{4}(x^{2}-2x-1)dx \\
+A_{[2,4]} &= (\frac{4^{3}}{3}-4^{2}-4) - (\frac{2^{3}}{3}-2^{2}-2) \\
+A_{[2,4]} &= \frac{4}{3}-\frac{-10}{3} \\
+A_{[2,4]} &= 14/3
+\end{align}
+
+\noindent
+The displacement of the runner in the interval $[2,4]$ is $4.67$ meters.
+\section{Conclusion}
+\noindent
+That was one hell of a ride just to realize that the definite integral was the answer all along. But hey, now we know what exactly that integral means and why we should care about integrals at all. \\
+
+\noindent
+Finding the area under a curve is extremely useful, especially in applied mathematics like physics, where you're graphing quantities against each other all the time. \\
+
+\section{References}
+\begin{verbatim}
+http://www.math.uchicago.edu/~murphykate/MPPMathCamp2017/MPP_Integration.pdf
+\end{verbatim}
+
+\begin{verbatim}
+https://www.math.ucdavis.edu/~hunter/m125b/ch1.pdf
+\end{verbatim}
+
+\begin{verbatim}
+https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus
+\end{verbatim}
+
+\begin{verbatim}
+my_calculus_teacher.exe
+\end{verbatim}
+\end{document}
+\end{document}
