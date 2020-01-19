@@ -167,3 +167,14 @@ button {
   font-size: 200%;
   cursor: pointer;
 }
+
+hr.style {
+  margin-left: 700px;
+  margin-right: 700px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+  height: 0px;
+  border: 0;
+  border-top: 2px solid #ffa500;
+}
