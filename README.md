@@ -1,2 +1,1 @@
-# my-site
-this is my site
+Old personal site I made in highschool.
